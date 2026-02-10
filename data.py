@@ -2,7 +2,7 @@ import websocket
 import json
 import time
 
-ESP_IP = "192.168.214.77"
+ESP_IP = "192.168.214.75"
 PORT = 82
 
 def on_message(ws, message):
@@ -13,7 +13,8 @@ def on_message(ws, message):
         count = data.get("count")
         status = data.get("status")
 
-        print(f"pressure={pressure}, count={count}, status={status}")
+        if (status != "NONE"):
+            print(f"pressure={pressure}, count={count}, status={status}")
 
     except Exception as e:
         print("Invalid JSON:", message, e)
